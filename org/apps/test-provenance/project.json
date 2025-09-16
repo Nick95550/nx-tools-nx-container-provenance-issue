@@ -1,0 +1,17 @@
+{
+  "name": "@org/test-provenance",
+  "sourceRoot": "apps/test-provenance/src",
+  "projectType": "application",
+  "targets": {
+    "ci": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "options": {
+        "context": "apps/test-provenance",
+        "file": "apps/test-provenance/Dockerfile",
+        "tags": ["test-provenance:latest"],
+        "provenance": "false"
+      }
+    }
+  }
+}

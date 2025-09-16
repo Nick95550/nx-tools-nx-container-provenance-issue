@@ -1,0 +1,28 @@
+{
+  "name": "@org/test-provenance",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "options": {
+          "platform": "node",
+          "outputPath": "apps/test-provenance/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "apps/test-provenance/src/main.ts",
+          "tsConfig": "apps/test-provenance/tsconfig.app.json"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
