@@ -1,0 +1,26 @@
+{
+  "name": "my-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "packages/my-app/src",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "tsc -p packages/my-app/tsconfig.lib.json"
+        ],
+        "parallel": false
+      }
+    },
+    "container-build": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "options": {
+        "context": "packages/my-app",
+        "file": "packages/my-app/Dockerfile",
+        "tags": ["my-app:latest"]
+      }
+    }
+  }
+}
